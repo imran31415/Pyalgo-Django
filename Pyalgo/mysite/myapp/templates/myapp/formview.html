@@ -1,0 +1,30 @@
+{% block title %}OUTPUT {% endblock %}
+{% block content %}
+<link rel='stylesheet' type='text/css' href='/static/myapp/home_page.css'/>
+<script src="/static/myapp/base.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Balthazar' rel='stylesheet' type='text/css'>
+
+
+<div class='bodytext'> 
+
+    {% if form.errors %}
+        <p>error detected</p>
+    {% endif %}
+    <form method="post" action="runthis">{% csrf_token %}
+        <table border="0">
+
+            <tr><th><label for="test algorithm">Enter Code:</label></th></tr>
+            <tr><th><label for="code"></label></th><td>
+    {{ form.code}}
+</td></tr>
+     
+        </table>
+        <input class ='loggy' type="submit" value="Run" />
+        <input type="hidden" name="next" value="/home" />
+    </form>
+
+    <div class= 'regy'><a class ='linky' href="/myapp/">Refresh</a></div>
+    {% for x in main_out %}
+    <p><font size="1">{{x}}</font></p>
+    {% endfor %}
+{% endblock %}

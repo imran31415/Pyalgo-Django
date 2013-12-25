@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<link rel='stylesheet' type='text/css' href='/static/myapp/home_page.css'/>
+<script src="/static/myapp/base.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Balthazar' rel='stylesheet' type='text/css'>
+
+
+<div class='bodytext'> 
+
+    <div class="foo">
+     
+    <span class="letter" id= "let1" data-letter="L">L</span>
+    <span class="letter" id= "let2" data-letter="O ">O</span>
+    <span class="letter" id= "let3" data-letter="G">G</span>
+    <span class="letter" id= "let4" data-letter="I">I</span>
+    <span class="letter" id= "let5" data-letter="N">N </span>
+    </div>
+</div>
+
+
+
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <form method="post" action=".">{% csrf_token %}
+        <table border="0">
+            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
+            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
+        </table>
+        <input class ='loggy' type="submit" value="Login" />
+        <input type="hidden" name="next" value="/home" />
+    </form>
+    <div class= 'regy'><a class ='linky' href="/register">Register</a></div>
+{% endblock %}
